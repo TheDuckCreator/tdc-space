@@ -1,20 +1,28 @@
-import React, { useState } from 'react'
+import React from 'react'
 import 'bulma/css/bulma.min.css'
 import './App.css'
 import Header from './Component/Header'
 import Footer from './Component/Footer'
-import Hero from './Component/Hero'
-
-const title = 'Spece สเปซ'
+import Home from './Page/Home'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 function App() {
   return (
     <div>
-      <Header />
-      <Hero title={title} />
-      <div className="container">
-        <section className="section"></section>
-      </div>
-      <Footer />
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/category"></Route>
+
+          <Route path="/content/:id"></Route>
+
+          <Route path="/about"></Route>
+
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
     </div>
   )
 }
