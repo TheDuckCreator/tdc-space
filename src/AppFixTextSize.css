@@ -59,8 +59,27 @@
   background-size: cover;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'mitr', sans-serif;
+}
+h1 {
+  font-size: 28px;
+}
+h2 {
+  font-size: 24px;
+  padding-bottom: 0.5em;
+  margin-top: 1em;
+}
+h3 {
+  font-size: 22px;
+}
+
 .feature-text {
-  height: 100px;
+  max-height: 200px;
   white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;

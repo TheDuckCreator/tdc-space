@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 export default function Header(params) {
   return (
-    <nav className="navbar is-transparent">
+    <nav className="navbar is-dark">
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
-          <h1 className="subtitle is-5 mitr">TDC-Space</h1>
+          <h1 className="subtitle is-5 mitr has-text-light">ทีดีซีสเปซ</h1>
         </Link>
         <div
           className="navbar-burger burger"

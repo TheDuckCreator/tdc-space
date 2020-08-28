@@ -1,20 +1,33 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Hero from '../Component/Hero'
 import config from '../conf.json'
 import _ from 'lodash'
 import axios from 'axios'
+import ReactMarkdown from 'react-markdown'
+import { Link } from 'react-router-dom'
 
 export default function Home(params) {
-  let collection = axios.get(config.apiurl + '/').then((articles) => {
-    return _.map((_article) => {
-      return (
-        <div>
-          <h3 className="title is-3"> {_article.title} </h3>
-          <hr />
-        </div>
-      )
+  const [content, setContent] = useState('')
+  useEffect(() => {
+    axios.get(config.apiurl + '/').then((articles) => {
+      let statedContent = _.map(articles.data, (_article) => {
+        return (
+          <div>
+            <Link className="has-text-link title is-3 mitr">
+              <h3> # {_article.Title} </h3>{' '}
+            </Link>
+            <hr />
+            <p className="feature-text">
+              <ReactMarkdown source={_article.Content} />
+            </p>
+            <hr />
+          </div>
+        )
+      })
+      setContent(statedContent)
     })
-  })
+    return () => {}
+  }, [])
 
   return (
     <div>
@@ -22,7 +35,7 @@ export default function Home(params) {
       <div className="container">
         <section className="section">
           <div className="columns">
-            <div className="column is-9">{collection}</div>
+            <div className="column is-9">{content}</div>
             <div className="column is-3"></div>
           </div>
         </section>
