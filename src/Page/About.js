@@ -6,14 +6,12 @@ import ReactMarkdown from 'react-markdown'
 import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import coverPhoto from '../Asset/cover.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
-export default function Content(params) {
+
+export default function About(params) {
   const [content, setContent] = useState('')
-  const id = useParams().id
 
   useEffect(() => {
-    axios.get(config.apiurl + '/' + id).then((articles) => {
+    axios.get(config.apiurl + '/' + 3).then((articles) => {
       let _article = articles.data
       console.log(_article)
       let statedContent = (
@@ -47,53 +45,20 @@ export default function Content(params) {
     })
 
     return () => {}
-  }, [id])
+  }, [])
 
   return (
     <div>
-      <Hero title="TDC-Space" subtitle="ขอให้เป็ดมีพื้นที่" />
+      <Hero title="About" subtitle="เกี่ยวกับทีดีซีสเปซ" />
       <div className="container">
         <section className="section">
           <div className="columns">
             <div className="column is-9">
               {content}
-              <div className="columns">
-                <div className="column is-2">
-                  <button
-                    className="button is-info is-small "
-                    href={
-                      'https://www.facebook.com/sharer/sharer.php?u=http://space.theduckcreator.in.th/content/' +
-                      id +
-                      ';src=sdkpreparse'
-                    }
-                  >
-                    {' '}
-                    <FontAwesomeIcon
-                      icon={faFacebook}
-                      style={{ marginRight: '2px' }}
-                    />
-                    Share
-                  </button>
-                </div>
-                <div className="column is-1">
-                  <button
-                    className="button is-info is-small "
-                    href="https://twitter.com/intent/tweet"
-                  >
-                    {' '}
-                    <FontAwesomeIcon
-                      icon={faTwitter}
-                      style={{ marginRight: '2px' }}
-                    />
-                    Tweet
-                  </button>
-                </div>
-              </div>
-
               <br />
               <div
                 className="fb-comments"
-                data-href={'http://space.theduckcreator.in.th/content/' + id}
+                data-href="http://space.theduckcreator.in.th/content/"
                 data-numposts="5"
                 data-width=""
               ></div>
